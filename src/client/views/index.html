@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Colin Huber">
+    <title>Evaluating News Articles Using NLP</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <div class="">
+            Header
+        </div>
+    </header>
+
+    <main>
+        <!-- TBD put a statement "Powered by MeaningCloud API" per the terms and conditions -->
+
+        <!-- https://www.meaningcloud.com/terms-and-conditions -->
+        <!-- Attribution -->
+        <!-- Users of the Free Plan of the Service, shall agree to conspicuously display the MeaningCloud 
+            API logo to indicate that MeaningCloud technology is being used. This graphic shall measure at
+            least 200 by 100 pixels and be displayed on all web pages, documents or other renderings where
+            MeaningCloud API Content or API data is used. In addition you will provide a clickable
+            hyperlink to MeaningCloud which shall read: "Powered by MeaningCloud API" within your
+            website or application. Similar attributions must be used in all published and/or printed
+            works, including but not limited to research papers and journal articles. MeaningCloud
+            hereby grants a nontransferable, nonexclusive license to use MeaningCloud's trademarks
+            during the period of use to display the MeaningCloud icon and to advertise the use of
+            MeaningCloud's API on licensee’s site or service. Likewise, licensee hereby grants to
+            MeaningCloud a nontransferable, nonexclusive license under Licensee's trademarks
+            during the period of use to advertise that Licensee is using MeaningCloud's Services.
+            Except as set forth in this Section, nothing in this Agreement shall be considered
+            a grant or shall be deemed to grant to one party any right, title or interest in or
+            to the other party's trademarks. All use of Licensee's trademarks by MeaningCloud shall inure
+            to the benefit of Licensee and all uses of MeaningCloud trademarks by Licensee shall inure
+            to the benefit of MeaningCloud. -->
+
+        <!-- Img of the meaningcloud -->
+        <!-- Try using base64 -->
+
+        <section>
+            <form class="">
+                <input id="input-url" type="text" placeholder="Enter URL here..." onfocus="this.value=''">
+                <input type="submit" value="Analyze URL" onclick="return handleSubmit(event)">
+            </form>
+        </section>
+
+        <section>
+            <strong>Analysis of the article:</strong>
+            <div id="results"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            This "Evaluating a News Article to use Natural Language Processing" app was created to complete the
+            requirements for the Udacity Front End Web Developer Nanodegree program.
+        </p>
+    </footer>
+
+    <!-- TBD delete -->
+    <script src="..\js\formHandler.js"></script>
+
+</body>
+
+</html>
