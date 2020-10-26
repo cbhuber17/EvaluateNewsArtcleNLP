@@ -1,12 +1,42 @@
 form {
-    border: 1px solid #545454;
-    border-radius: 3px;
+    border: 2px solid silver;
+    border-radius: 5px;
     padding: 40px;
+    transition: 0.3s ease-in-out;
+    background-color: grey;
+
+    &:hover {
+        box-shadow: 3px 3px 5px silver;
+    }
 }
 
 input {
     padding: 5px 20px;
-    width: 100%;
+    width: 75%;
     line-height: 16px;
     margin: 10px 0;
+    border-radius: 5px;
+}
+
+.inputCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    background-color: orange;
+    border: 2px solid black;
+    border-radius: 5px;
+    transition: 0.3s ease;
+    &:hover {
+    background-color: gold;
+    box-shadow: 3px 3px 5px silver;
+    }
 }

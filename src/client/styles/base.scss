@@ -1,7 +1,14 @@
+html {
+    font-family: Raleway;
+    color: #fafafa;
+}
+
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background: #3a3f44;
+    border: 2px solid white;
 }
 
 main {
@@ -11,4 +18,35 @@ main {
 section {
     max-width: 800px;
     margin: 50px auto;
+}
+
+.result-entry {
+    display: flex;
+    justify-content: center;
+}
+
+.results-header {
+    width: 40%;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: underline 
+}
+
+.result {
+    width: 40%;
+    text-align: center;
+    padding: 10px;
+    margin: 20px;
+    border: 2px solid silver;
+    transition: 0.3s ease-in-out;
+    border-radius: 5px;
+    background-color: grey;
+
+    &:hover {
+        box-shadow: 3px 3px 5px silver;
+    }
+}
+
+.hide {
+    display: none;
 }

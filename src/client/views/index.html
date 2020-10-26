@@ -13,14 +13,12 @@
 <body>
 
     <header>
-        <div class="">
-            Header
-        </div>
+        <h1>
+            Evaluating a News Article to use Natural Language Processing
+        </h1>
     </header>
 
     <main>
-        <!-- TBD put a statement "Powered by MeaningCloud API" per the terms and conditions -->
-
         <!-- https://www.meaningcloud.com/terms-and-conditions -->
         <!-- Attribution -->
         <!-- Users of the Free Plan of the Service, shall agree to conspicuously display the MeaningCloud 
@@ -41,19 +39,57 @@
             to the benefit of Licensee and all uses of MeaningCloud trademarks by Licensee shall inure
             to the benefit of MeaningCloud. -->
 
-        <!-- Img of the meaningcloud -->
-        <!-- Try using base64 -->
+        <p class="inputCenter">Powered by MeaningCloud API:</p>
+
+        <div class="mc">
+            <a href="https://www.meaningcloud.com/"><img src="mc_logo2.png" alt="MediaCloud logo"></a>
+        </div>
 
         <section>
-            <form class="">
-                <input id="input-url" type="text" placeholder="Enter URL here..." onfocus="this.value=''">
-                <input type="submit" value="Analyze URL" onclick="return handleSubmit(event)">
+            <form>
+                <p class="inputCenter"> Place a URL of a news article in the box below to have the content analyzed:</p>
+                <div class="inputCenter">
+                    <input id="input-url" type="text" placeholder="Enter URL here..." onfocus="this.value=''">
+                </div>
+                <div class="buttonCenter">
+                    <button id="analyze" type="submit" onclick="return Client.handleSubmit(event)">Analyze URL</button>
+                </div>
             </form>
         </section>
 
         <section>
-            <strong>Analysis of the article:</strong>
-            <div id="results"></div>
+            <div id="results" class="hide">
+                <h2>Analysis of the article:</h2>
+                <div class="result-entry">
+                    <div class="results-header">Analysis</div>
+                    <div class="results-header">Description</div>
+                </div>
+
+                <div class="result-entry">
+                    <div id="score" class="result"></div>
+                    <div id="score-description" class="result"></div>
+                </div>
+
+                <div class="result-entry">
+                    <div id="agreement" class="result"></div>
+                    <div id="agreement-description" class="result"></div>
+                </div>
+
+                <div class="result-entry">
+                    <div id="subjectivity" class="result"></div>
+                    <div id="subjectivity-description" class="result"></div>
+                </div>
+
+                <div class="result-entry">
+                    <div id="confidence" class="result"></div>
+                    <div id="confidence-description" class="result"></div>
+                </div>
+
+                <div class="result-entry">
+                    <div id="irony" class="result"></div>
+                    <div id="irony-description" class="result"></div>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -62,10 +98,18 @@
             This "Evaluating a News Article to use Natural Language Processing" app was created to complete the
             requirements for the Udacity Front End Web Developer Nanodegree program.
         </p>
+        <div id="credits"></div>
     </footer>
 
-    <!-- TBD delete -->
-    <script src="..\js\formHandler.js"></script>
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
 
 </body>
 

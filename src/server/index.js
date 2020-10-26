@@ -2,8 +2,12 @@
 // Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env
 // Point to the .env file from this server file
 const dotenv = require('dotenv');
-dotenv.config({ path: '../../.env' });
+// dotenv.config({ path: '../../.env' });
+dotenv.config();
 const API_KEY = process.env.API_KEY;
+
+// TBD delete
+console.log(API_KEY);
 
 // Path information - https://nodejs.org/api/path.html 
 // The path module provides utilities for working with file and directory paths (comes built in with NodeJs).
@@ -13,8 +17,9 @@ const path = require('path');
 const express = require('express');
 
 const app = express();
-// app.use(express.static('dist'));
-app.use(express.static('../client'));
+app.use(express.static('dist'));
+// app.use(express.static('../../dist'));
+// app.use(express.static('../client')); TBD delete
 
 const bodyParser = require('body-parser');
 
@@ -33,11 +38,11 @@ const fetch = require('node-fetch');
 // Upon entry of the main page, have the server serve it
 // TBD remove: The '/' will call as soon as the page loads, it's the root.
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('../client/views/index.html'));
+    res.sendFile('dist/index.html');
+    // res.sendFile(path.resolve('../client/views/index.html'));
 })
 
-// Port to use - webpack will be using 8080, so this server should use 8081
+// Port to use - webpack dev server will be using 8080, so this server should use 8081 for express/production
 const port = `8081`;
 
 // Designates what port the app will listen to for incoming requests
