@@ -11,6 +11,9 @@ import './styles/form.scss'
 // Images
 import './img/mc_logo2.png'
 
+// HTML 
+import './views/index.html'
+
 // Adding to the "Client" library (per the webpack*.js file).
 export {
     handleSubmit,

@@ -2,8 +2,8 @@
 // Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env
 // Point to the .env file from this server file
 const dotenv = require('dotenv');
-// dotenv.config({ path: '../../.env' });
-dotenv.config();
+dotenv.config({ path: '../../.env' });
+// dotenv.config();
 const API_KEY = process.env.API_KEY;
 
 // TBD delete
