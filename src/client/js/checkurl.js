@@ -1,4 +1,7 @@
-// TBD document function
+/*
+* Function checks if the input is a valid URL using a regex expression
+* @param {String} url - URL (to be used to fetch a news article)
+*/
 export function checkURL(url) {
 
     // Regex expression to test if it is a valid URL

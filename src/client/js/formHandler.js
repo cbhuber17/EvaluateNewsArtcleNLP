@@ -1,6 +1,10 @@
-// Helper functions
-// TBD document functions
+// Helper functions for describing the values returned by the API
 
+/*
+* Function returns the description based on the score
+* @param {String} score - The score from the API call
+* @return {String} - The score description
+*/
 function getScoreTagDescription(score) {
 
     let description = '';
@@ -32,6 +36,11 @@ function getScoreTagDescription(score) {
     return description;
 }
 
+/*
+* Function returns the description based on the agreement
+* @param {String} agreement - The agreement from the API call
+* @return {String} - The agreement description
+*/
 function getAgreementDescription(agreement) {
 
     let description = '';
@@ -51,6 +60,11 @@ function getAgreementDescription(agreement) {
     return description;
 }
 
+/*
+* Function returns the description based on the subjectivity
+* @param {String} subjectivity - The subjectivity from the API call
+* @return {String} - The subjectivity description
+*/
 function getSubjectivityDescription(subjectivity) {
 
     let description = '';
@@ -70,9 +84,13 @@ function getSubjectivityDescription(subjectivity) {
     }
 
     return description;
-
 }
 
+/*
+* Function returns the description based on the confidence
+* @param {String} confidence - The confidence from the API call (valid 0-100)
+* @return {String} - The confidence description
+*/
 export function getConfidenceDescription(confidence) {
 
     let description = '';
@@ -113,9 +131,13 @@ export function getConfidenceDescription(confidence) {
     }
 
     return description;
-
 }
 
+/*
+* Function returns the description based on the irony
+* @param {String} irony - The irony from the API call
+* @return {String} - The irony description
+*/
 function getIronyDescription(irony) {
 
     let description = '';
@@ -137,13 +159,18 @@ function getIronyDescription(irony) {
 
 }
 
-// TBD document function
+/*
+* Async function handles the action when the button is pressed on the main mage:
+* - Gets the URL entered and validates it is correct URL format
+* - POSTs the URL to the local server, where the local server will call the external API
+* - The server returns the API data and the UI on the main page gets updated with the API data
+* @param {Object} event - Window event object
+*/
 async function handleSubmit(event) {
 
     event.preventDefault();
 
     const formText = document.getElementById('input-url').value;
-
     const urlToAnalyze = { formText };
 
     // Check the URL prior to fetching API
@@ -152,7 +179,7 @@ async function handleSubmit(event) {
         return;
     }
 
-    // POST the urlToAnalyze so we can fetch the API call
+    // POST the urlToAnalyze to the local server so the local server can fetch the external API call
     const response = await fetch('http://localhost:8081/api', {
         method: 'POST',
         credentials: 'same-origin',
@@ -164,11 +191,12 @@ async function handleSubmit(event) {
     try {
         const apiData = await response.json();
 
+        // Update the UI if successful
         if (apiData.status.code == '0') {
             UpdateUI(apiData);
         }
         else {
-            alert('Invalid URL to analyze entered.  Try again.');
+            alert('ERROR: Could not process URL. Try again or a different URL.');
         }
     }
     catch (error) {
@@ -177,17 +205,23 @@ async function handleSubmit(event) {
     }
 }
 
-// TBD document function
+/*
+*  Function updates the UI based on the API data received
+* @param {Object} apiData - API data object
+*/
 function UpdateUI(apiData) {
 
+    // API values and descriptions of each
     const score_tag = { value: apiData.score_tag, description: getScoreTagDescription(apiData.score_tag) };
     const agreement = { value: apiData.agreement, description: getAgreementDescription(apiData.agreement) };
     const subjectivity = { value: apiData.subjectivity, description: getSubjectivityDescription(apiData.subjectivity) };
     const confidence = { value: apiData.confidence, description: getConfidenceDescription(apiData.confidence) };
     const irony = { value: apiData.irony, description: getIronyDescription(apiData.irony) };
 
+    // Show the results
     document.getElementById('results').classList.remove('hide');
 
+    // Update the HTML for each element in the results section
     document.getElementById('score').innerHTML = `The article score is: ${score_tag.value}.`;
     document.getElementById('score-description').innerHTML = `${score_tag.description}`;
 
@@ -203,6 +237,7 @@ function UpdateUI(apiData) {
     document.getElementById('irony').innerHTML = `The article irony is: ${irony.value}.`;
     document.getElementById('irony-description').innerHTML = `${irony.description}`;
 
+    // Put a note regarding remaining API credits in the footer
     document.getElementById('credits').innerHTML = `<p>Note: MeaningCloud API Credits Remaining: ${apiData.status.remaining_credits}.</p>`
 }
 
