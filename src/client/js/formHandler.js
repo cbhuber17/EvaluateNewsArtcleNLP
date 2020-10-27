@@ -73,13 +73,19 @@ function getSubjectivityDescription(subjectivity) {
 
 }
 
-function getConfidenceDescription(confidence) {
+export function getConfidenceDescription(confidence) {
 
-    const confidence_num = parseInt(confidence);
     let description = '';
 
+    // Check for a valid number
+    if (isNaN(confidence)) {
+        return description;
+    }
+
+    const confidence_num = parseInt(confidence);
+
     if (confidence_num == 0) {
-        description == 'No confidence.';
+        description = 'No confidence.';
     }
 
     else if (confidence_num > 0 && confidence_num <= 20) {
