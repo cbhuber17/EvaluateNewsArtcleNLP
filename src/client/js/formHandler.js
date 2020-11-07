@@ -180,7 +180,7 @@ async function handleSubmit(event) {
     }
 
     // POST the urlToAnalyze to the local server so the local server can fetch the external API call
-    const response = await fetch('http://localhost:8081/api', {
+    const response = await fetch('/api', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { 'Content-type': 'application/json' },
