@@ -44,9 +44,11 @@ The page will dynamically return an AI assessment of the news article.
 
 Note: If connectivity is lost after the page loads, offline support is maintained using Google WorkBox.
 
+## URL
 
+The web app is hosted on heroku here: https://evaluating-news-article-nlp.herokuapp.com/
 
-## Explanation of the devPlugins in package.json:
+## APPENDIX: Explanation of the devPlugins in package.json:
 
 * "@babel/core": "^7.5.4",  // Babel to translate ES6 JS to Vanilla JS (for older browsers)
 
